@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/tony/.oh-my-zsh"
+export ZSH="/Users/tonyrowan/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -12,7 +12,7 @@ ZSH_THEME="geoffgarside"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -33,7 +33,7 @@ ZSH_THEME="geoffgarside"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -64,27 +64,48 @@ ZSH_THEME="geoffgarside"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby)
+plugins=(git)
+
+# Get homebrew's completions to install _before_ zsh completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-## Let gpg take input from the user when run by git
+# GPG
 export GPG_TTY=$(tty)
 
-## Include custom scripts in PATH
+# Aliases
+alias gs='git status'
+alias gd='git diff'
+alias gc='git checkout'
+alias gb='git branch'
+
+alias cdf='cd ~/workspace/global-feeds'
+alias cdw='cd ~/workspace/global-web'
+
+alias aws='envchain aws aws'
+
+# Additional Scripts
 export PATH=$PATH:$HOME/bin
 
-## Use ASDF
+
+# Intsall asdf
 . /usr/local/opt/asdf/asdf.sh
 
-## Useful Aliases
-alias gs='git status'
-alias gb='git branch'
-alias gc='git checkout'
+# Editor preferences
+export EDITOR=vim
+export BUNDLER_EDITOR=code
 
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
