@@ -68,7 +68,7 @@ ZSH_THEME="geoffgarside"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git ruby rails)
 
 # Get homebrew's completions to install _before_ zsh completions
 if type brew &>/dev/null; then
@@ -104,8 +104,12 @@ export PATH=$PATH:$HOME/bin
 . /usr/local/opt/asdf/asdf.sh
 
 # Editor preferences
+
+## Need to be able to open SublimeText from command line
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
 export EDITOR=vim
-export BUNDLER_EDITOR=code
+export BUNDLER_EDITOR=subl
 
-
+# Install Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
