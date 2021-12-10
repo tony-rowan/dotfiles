@@ -1,0 +1,12 @@
+*
+
+!.asdfrc
+!.default-*
+!.gitignore
+!.gitmodules
+!.vim*
+!.zshrc
+!bin
+
+.viminfo
+
