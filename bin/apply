@@ -1,0 +1,4 @@
+#!/bin/zsh
+cp -r src/bin ~/
+cp src/.* ~/
+
