@@ -1,12 +1,1 @@
-*
-
-!.asdfrc
-!.default-*
-!.gitignore
-!.gitmodules
-!.vim*
-!.zshrc
-!bin
-
-.viminfo
-
+.DS_STORE

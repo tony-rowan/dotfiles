@@ -90,18 +90,16 @@ alias gs='git status'
 alias gd='git diff'
 alias gc='git checkout'
 alias gb='git branch'
-
-alias cdf='cd ~/workspace/global-feeds'
-alias cdw='cd ~/workspace/global-web'
-
-alias aws='envchain aws aws'
+alias gcmsg='git commit -m'
 
 # Additional Scripts
 export PATH=$PATH:$HOME/bin
 
-
 # Intsall asdf
 . /usr/local/opt/asdf/asdf.sh
+
+# Install Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Editor preferences
 
@@ -111,5 +109,3 @@ export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 export EDITOR=vim
 export BUNDLER_EDITOR=subl
 
-# Install Yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

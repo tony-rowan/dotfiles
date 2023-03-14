@@ -19,13 +19,20 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
 augroup END
 
-" Add packages
-if has('syntax') && has('eval')
-  packadd! matchit
-  packadd! vim-elixir
-endif
-
 " Enables filetype detection, turns on highlighting, indentation
 filetype plugin indent on
 syntax on
 
+" Use vim-plug to manage plugins
+call plug#begin()
+  Plug 'junegunn/vim-easy-align'
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'sainnhe/sonokai'
+call plug#end()
+
+let g:sonokai_style = 'andromeda'
+let g:sonokai_better_performance = 1
+
+colorscheme sonokai
