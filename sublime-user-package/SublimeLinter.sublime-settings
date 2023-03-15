@@ -1,0 +1,13 @@
+// SublimeLinter Settings - User
+{
+    "paths": {
+        "osx": ["$HOME/.asdf/shims"]
+    },
+
+    "linters": {
+        "rubocop": {
+            "env": { "PATH":"~/.asdf/shims:$PATH" },
+            "use_bundle_exec": true
+        }
+    }
+}

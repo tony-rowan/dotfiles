@@ -1,0 +1,30 @@
+{
+	"font_face": "Ubuntu Mono",
+	"font_size": 13,
+
+	"rulers": [80, 120],
+
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+
+	"draw_minimap_border": true,
+
+	"highlight_line": true,
+	"overlay_scroll_bars": true,
+
+	"scroll_past_end": false,
+
+	"trim_trailing_white_space_on_save": "all",
+	"trim_only_modified_white_space": false,
+	"ensure_newline_at_eof_on_save": true,
+
+	"save_on_focus_lost": true,
+
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Monokai.sublime-color-scheme",
+}

@@ -1,0 +1,23 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Elixir",
+		"FileIcons",
+		"Git",
+		"Liquid",
+		"MarkdownPreview",
+		"Package Control",
+		"PackageDev",
+		"Sass",
+		"SCSS",
+		"sublime-github",
+		"SublimeLinter",
+		"SublimeLinter-rubocop",
+		"Tailwind CSS",
+	],
+}

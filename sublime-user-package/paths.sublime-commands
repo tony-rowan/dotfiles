@@ -1,0 +1,8 @@
+[
+  { "caption": "Paths: Copy Relative Path",
+    "command": "copy_relative_path"
+  },
+  { "caption": "Paths: Copy Absolute Path",
+    "command": "copy_absolute_path"
+  },
+]
