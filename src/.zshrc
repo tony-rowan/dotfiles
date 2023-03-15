@@ -68,7 +68,7 @@ ZSH_THEME="geoffgarside"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby rails)
+plugins=(asdf git ruby rails)
 
 # Get homebrew's completions to install _before_ zsh completions
 if type brew &>/dev/null; then
@@ -94,9 +94,6 @@ alias gcmsg='git commit -m'
 
 # Additional Scripts
 export PATH=$PATH:$HOME/bin
-
-# Intsall asdf
-. /usr/local/opt/asdf/asdf.sh
 
 # Install Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
