@@ -1,4 +1,5 @@
 #!/bin/zsh
 cp -r src/bin ~/
 cp src/.* ~/
+cp sublime-user-package/* ~/Library/Application\ Support/Sublime\ Text/Packages/User/
 
