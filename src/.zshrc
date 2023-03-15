@@ -92,9 +92,6 @@ alias gc='git checkout'
 alias gb='git branch'
 alias gcmsg='git commit -m'
 
-# Additional Scripts
-export PATH=$PATH:$HOME/bin
-
 # Install Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
