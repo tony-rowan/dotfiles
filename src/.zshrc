@@ -91,6 +91,12 @@ alias gd='git diff'
 alias gc='git checkout'
 alias gb='git branch'
 alias gcmsg='git commit -m'
+alias gpom='git pull origin main'
+
+## Aliases just for this machine
+if [ -f $HOME/.aliases ]; then
+    source $HOME/.aliases 
+fi
 
 # Additional Scripts
 export PATH=$PATH:$HOME/bin
