@@ -10,12 +10,13 @@ snapshot of a personal shell, terminal, and tmux configuration, plus a couple of
 Install these first using your preferred method:
 
 - macOS
-- Alacritty
-- `Source Code Pro ExtraLight`
-- `oh-my-zsh` installed at `~/.oh-my-zsh`
-- Homebrew
+- [Alacritty][alacritty]
+- [`Source Code Pro ExtraLight`][source-code-pro]
+- [`oh-my-zsh`][oh-my-zsh] installed at `~/.oh-my-zsh`
+- [Homebrew][homebrew]
 
-Then use Homebrew itself it for the command-line dependencies:
+Then use [Homebrew][homebrew] itself for the command-line dependencies: `git`, [`tmux`][tmux],
+[`tpm`][tpm], and [`mise`][mise].
 
 ```sh
 brew install git tmux tpm mise
@@ -25,6 +26,14 @@ Assumptions baked into the config:
 
 - tmux plugin manager is loaded from `/opt/homebrew/opt/tpm/share/tpm/tpm`.
 - Optional machine-specific aliases live in `~/.aliases`.
+
+[alacritty]: https://alacritty.org/
+[source-code-pro]: https://fonts.adobe.com/fonts/source-code-pro
+[oh-my-zsh]: https://ohmyz.sh/
+[homebrew]: https://brew.sh/
+[tmux]: https://github.com/tmux/tmux/wiki
+[tpm]: https://github.com/tmux-plugins/tpm
+[mise]: https://mise.jdx.dev/
 
 ## What is here
 

@@ -20,3 +20,4 @@ apply or support that setup.
   in `README.md`.
 - `bin/apply` and `bin/sync` must manage the same set of tracked config paths in opposite
   directions.
+- When adding URLs to Markdown files, use Markdown reference links instead of inline links.
