@@ -11,15 +11,14 @@ Install these first using your preferred method:
 
 - macOS
 - Alacritty
-- `oh-my-zsh` installed at `~/.oh-my-zsh`
 - `Source Code Pro ExtraLight`
-
-Then install Homebrew itself and use it for the command-line dependencies:
-
+- `oh-my-zsh` installed at `~/.oh-my-zsh`
 - Homebrew
 
+Then use Homebrew itself it for the command-line dependencies:
+
 ```sh
-brew install git tmux tpm asdf
+brew install git tmux tpm mise
 ```
 
 Assumptions baked into the config:
