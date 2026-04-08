@@ -41,17 +41,17 @@ The repo has two top-level directories:
 ```text
 .
 ├── bin/
-│   ├── AGENTS.md
 │   ├── apply
 │   ├── setup
 │   └── sync
 └── src/
     ├── .config/
-    │   └── alacritty/
+    │   ├── alacritty/
+    │   └── tmux/
     ├── .default-gems
     ├── .zshrc
     ├── bin/
-    └── tmux/
+    └── ...
 ```
 
 ### Repo Scripts (`bin/`)
@@ -65,13 +65,19 @@ The repo has two top-level directories:
 
 ### Config (`src/`)
 
-- `src/.zshrc`: `zsh` shell config; loads `oh-my-zsh`, enables the `asdf`, `git`, `ruby`, and
-  `rails` plugins, and adds a few aliases and machine-local hooks.
-- `src/.config/alacritty/`: Alacritty config; loads a separate theme file, uses `Source Code Pro
-  ExtraLight`, and maps macOS-style key bindings for tmux control.
-- `src/tmux/tmux.conf`: tmux config; sets status bar options, pane and window behaviour, mouse
-  support, history size, and plugins.
-- `src/tmux/shortpath.sh`: tmux helper script; shortens long paths in the status line.
+- `src/.zshrc`: `zsh` shell config; loads `oh-my-zsh`, enables the `mise`, `git`, and `rails`
+  plugins, sets editor and GPG environment variables, and sources optional machine-local hooks
+  from `~/.aliases` and `~/.machine-config`.
+- `src/.config/alacritty/alacritty.toml`: Alacritty config; imports a separate theme file, uses
+  `Source Code Pro ExtraLight`, keeps live reload enabled, and maps macOS-style key bindings for
+  tmux control and shell navigation.
+- `src/.config/alacritty/themes/theme.toml`: the colour theme imported by Alacritty.
+- `src/.config/tmux/tmux.conf`: tmux config; enables mouse support and a large scrollback
+  history, keeps splits and new windows rooted at the current pane path, puts the status bar at
+  the top, and loads `tpm`, `tmux-sensible`, `vim-tmux-navigator`, `tmux-resurrect`, and
+  `tmux-continuum`.
+- `src/.config/tmux/shortpath.sh`: tmux helper script; shortens the current path for the window
+  title shown in the status line.
 - `src/bin/git-remove-other-branches`: git helper script; deletes every local branch except the
   current one.
 - `src/.default-gems`: Ruby default gems file; installs a small baseline set of gems.
