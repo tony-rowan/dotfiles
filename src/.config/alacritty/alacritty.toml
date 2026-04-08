@@ -110,3 +110,8 @@ history = 10000
 decorations = "buttonless"
 dynamic_padding = false
 
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"

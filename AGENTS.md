@@ -18,3 +18,5 @@ apply or support that setup.
 
 - Any change to the repo structure, setup process, or documented behaviour must also be reflected
   in `README.md`.
+- `bin/apply` and `bin/sync` must manage the same set of tracked config paths in opposite
+  directions.

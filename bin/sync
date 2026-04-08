@@ -24,7 +24,7 @@ copy_file() {
   rsync -a "$source_path" "$target_path"
 }
 
-copy_dir_contents() {
+mirror_dir_contents() {
   source_path=$1
   target_path=$2
 
@@ -35,11 +35,13 @@ copy_dir_contents() {
 
   mkdir -p "$target_path"
   printf 'copy %s/ -> %s/\n' "$source_path" "$target_path"
-  rsync -a "$source_path"/ "$target_path"/
+  rsync -a --delete "$source_path"/ "$target_path"/
 }
 
-copy_dir_contents "$src_root/bin" "$HOME/bin"
-copy_file "$src_root/.zshrc" "$HOME/.zshrc"
-copy_file "$src_root/.default-gems" "$HOME/.default-gems"
-copy_dir_contents "$src_root/.config/alacritty" "$HOME/.config/alacritty"
-copy_dir_contents "$src_root/tmux" "$HOME/.config/tmux"
+copy_file "$HOME/.zshrc" "$src_root/.zshrc"
+copy_file "$HOME/.default-gems" "$src_root/.default-gems"
+copy_file "$HOME/bin/git-remove-other-branches" "$src_root/bin/git-remove-other-branches"
+copy_file "$HOME/.config/alacritty/alacritty.toml" "$src_root/.config/alacritty/alacritty.toml"
+mirror_dir_contents "$HOME/.config/alacritty/themes" "$src_root/.config/alacritty/themes"
+copy_file "$HOME/.config/tmux/tmux.conf" "$src_root/tmux/tmux.conf"
+copy_file "$HOME/.config/tmux/shortpath.sh" "$src_root/tmux/shortpath.sh"

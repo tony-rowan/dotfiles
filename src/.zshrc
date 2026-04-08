@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="geoffgarside"
@@ -23,14 +23,13 @@ ZSH_THEME="geoffgarside"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -45,6 +44,9 @@ ZSH_THEME="geoffgarside"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -68,44 +70,38 @@ ZSH_THEME="geoffgarside"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf git ruby rails)
-
-# Get homebrew's completions to install _before_ zsh completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
+plugins=(mise git rails)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Activate mise
+eval "$(~/.local/bin/mise activate zsh)"
+
 # GPG
 export GPG_TTY=$(tty)
 
 # Aliases
-alias gs='git status'
-alias gd='git diff'
-alias gc='git checkout'
-alias gb='git branch'
-alias gcmsg='git commit -m'
-alias gpom='git pull origin main'
+alias gs='git status' # I don't want to open Ghostscript, ever
+alias gc='git checkout' # I'm just too used to typing this
+alias cdgr='cd $(git rev-parse --show-toplevel)'
 
 ## Aliases just for this machine
+
 if [ -f $HOME/.aliases ]; then
-    source $HOME/.aliases 
+    source $HOME/.aliases
 fi
 
-# Install Yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# Configuration just for this machine
+if [ -f $HOME/.machine-config ]; then
+    source $HOME/.machine-config
+fi
 
 # Editor preferences
-
-## Need to be able to open SublimeText from command line
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-
 export EDITOR=vim
-export BUNDLER_EDITOR=subl
+export BUNDLER_EDITOR=nvim
+
+# Enable FZF for back search etc.
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

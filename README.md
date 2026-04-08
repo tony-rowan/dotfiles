@@ -37,7 +37,9 @@ The repo has two top-level directories:
 ```text
 .
 ├── bin/
-│   └── apply
+│   ├── AGENTS.md
+│   ├── apply
+│   └── sync
 └── src/
     ├── .config/
     │   └── alacritty/
@@ -49,9 +51,11 @@ The repo has two top-level directories:
 
 ### Repo Scripts (`bin/`)
 
-- `bin/apply`: partial install script; currently copies `src/bin/` and top-level dotfiles from
-  `src/` into the home directory.
-- `bin/sync`: planned script to copy an existing setup back into this repo.
+- `bin/apply`: copies the tracked config from `src/` into the matching locations under `$HOME`,
+  including `~/bin/`, `~/.zshrc`, `~/.default-gems`, `~/.config/alacritty/`, and
+  `~/.config/tmux/`.
+- `bin/sync`: copies the current workstation config from `$HOME` back into the tracked locations
+  under `src/`.
 
 ### Config (`src/`)
 
