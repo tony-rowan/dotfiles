@@ -7,5 +7,17 @@ if ! command -v brew >/dev/null 2>&1; then
   exit 1
 fi
 
+# Xcode Command Line Tools are required for building Ruby, Python, and Node
+if ! xcode-select -p >/dev/null 2>&1; then
+  xcode-select --install
+fi
+
+# Core tools
 brew install git tmux tpm mise neovim
+
+# Build dependencies for ruby-build (https://github.com/rbenv/ruby-build/wiki)
+# and Python / pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
+brew install openssl@3 readline libyaml gmp autoconf sqlite3 xz tcl-tk@8 libb2 zstd zlib pkgconfig
+
+# GUI apps
 brew install --cask visual-studio-code
