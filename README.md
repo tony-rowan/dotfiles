@@ -2,12 +2,9 @@
 
 Small, opinionated dotfiles for my own day-to-day macOS setup.
 
-This is not a generic bootstrap framework or a fully automated workstation setup. It is a public
-snapshot of a personal shell, terminal, and editor configuration, plus a couple of utility scripts.
-
 ## Requirements
 
-Install these first using your preferred method:
+Get or install all of these however you like:
 
 - macOS
 - [Source Code Pro ExtraLight][source-code-pro]
@@ -17,12 +14,13 @@ Install these first using your preferred method:
 
 ## Setup
 
+Install the Homebrew-managed tooling via `src/Brewfile` including `git`,
+[`tmux`][tmux], [`tpm`][tpm], [`mise`][mise], [`neovim`][neovim], 
+and [`Zed`][zed].
+
 ```sh
 bin/setup
 ```
-
-`bin/setup` installs the remaining Homebrew-managed tooling via `src/Brewfile`: `git`,
-[`tmux`][tmux], [`tpm`][tpm], [`mise`][mise], [`neovim`][neovim], and [`Zed`][zed].
 
 ## Assumptions
 
@@ -30,6 +28,7 @@ Assumptions baked into the config:
 
 - tmux plugin manager is loaded from `/opt/homebrew/opt/tpm/share/tpm/tpm`.
 - Optional machine-specific aliases live in `~/.aliases`.
+- Optional machine-specific secrets and configuration live in `~/.config/env.local`.
 
 ## What is here
 
