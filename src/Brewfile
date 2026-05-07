@@ -1,0 +1,25 @@
+# Core tools
+brew "git"
+brew "gpg"
+brew "tmux"
+brew "tpm"
+brew "mise"
+brew "neovim"
+
+# Build dependencies for ruby-build (https://github.com/rbenv/ruby-build/wiki)
+# and Python / pyenv (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
+brew "openssl@3"
+brew "readline"
+brew "libyaml"
+brew "gmp"
+brew "autoconf"
+brew "sqlite3"
+brew "xz"
+brew "tcl-tk@8"
+brew "libb2"
+brew "zstd"
+brew "zlib"
+brew "pkgconfig"
+
+# GUI apps
+cask "visual-studio-code"
