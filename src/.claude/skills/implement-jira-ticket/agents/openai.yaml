@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implement Jira ticket"
+  short_description: "Fetch a Jira ticket, implement it, commit, and open a PR."
+  default_prompt: "Use $implement-jira-ticket to fetch this Jira ticket, implement the requested changes, commit them, and open a pull request."
