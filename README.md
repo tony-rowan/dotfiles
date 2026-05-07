@@ -3,7 +3,7 @@
 Small, opinionated dotfiles for my own day-to-day macOS setup.
 
 This is not a generic bootstrap framework or a fully automated workstation setup. It is a public
-snapshot of a personal shell, terminal, and tmux configuration, plus a couple of utility scripts.
+snapshot of a personal shell, terminal, and editor configuration, plus a couple of utility scripts.
 
 ## Requirements
 
@@ -21,8 +21,8 @@ Install these first using your preferred method:
 bin/setup
 ```
 
-`bin/setup` installs the remaining Homebrew-managed tooling dependencies: `git`, [`tmux`][tmux],
-[`tpm`][tpm], [`mise`][mise], [`neovim`][neovim], and [`Visual Studio Code`][visual-studio-code].
+`bin/setup` installs the remaining Homebrew-managed tooling via `src/Brewfile`: `git`,
+[`tmux`][tmux], [`tpm`][tpm], [`mise`][mise], [`neovim`][neovim], and [`Zed`][zed].
 
 ## Assumptions
 
@@ -45,26 +45,33 @@ The repo has two top-level directories:
 │   ├── setup
 │   └── sync
 └── src/
+    ├── .claude/
+    │   └── skills/
     ├── .config/
     │   ├── alacritty/
-    │   └── tmux/
+    │   ├── tmux/
+    │   └── zed/
     ├── .default-gems
     ├── .zshrc
     ├── bin/
+    ├── Brewfile
     └── ...
 ```
 
 ### Repo Scripts (`bin/`)
 
 - `bin/apply`: copies the tracked config from `src/` into the matching locations under `$HOME`,
-  including `~/bin/`, `~/.zshrc`, `~/.default-gems`, `~/.config/alacritty/`, and
-  `~/.config/tmux/`.
-- `bin/setup`: installs the Homebrew-managed third-party tools assumed by the repo.
+  including `~/bin/`, `~/.zshrc`, `~/.default-gems`, `~/.config/alacritty/`, `~/.config/tmux/`,
+  `~/.config/zed/`, and `~/.claude/skills/`.
+- `bin/setup`: installs the Homebrew-managed third-party tools assumed by the repo using
+  `src/Brewfile`.
 - `bin/sync`: copies the current workstation config from `$HOME` back into the tracked locations
   under `src/`.
 
 ### Config (`src/`)
 
+- `src/Brewfile`: Homebrew bundle file; declares all formula and cask dependencies installed by
+  `bin/setup`.
 - `src/.zshrc`: `zsh` shell config; loads `oh-my-zsh`, enables the `mise`, `git`, and `rails`
   plugins, sets editor and GPG environment variables, and sources optional machine-local hooks
   from `~/.aliases` and `~/.machine-config`.
@@ -78,9 +85,11 @@ The repo has two top-level directories:
   `tmux-continuum`.
 - `src/.config/tmux/shortpath.sh`: tmux helper script; shortens the current path for the window
   title shown in the status line.
+- `src/.config/zed/settings.json`: Zed editor settings.
 - `src/bin/git-remove-other-branches`: git helper script; deletes every local branch except the
   current one.
 - `src/.default-gems`: Ruby default gems file; installs a small baseline set of gems.
+- `src/.claude/skills/`: Claude Code custom skills.
 
 [alacritty]: https://alacritty.org/
 [source-code-pro]: https://fonts.adobe.com/fonts/source-code-pro
@@ -90,4 +99,4 @@ The repo has two top-level directories:
 [tpm]: https://github.com/tmux-plugins/tpm
 [mise]: https://mise.jdx.dev/
 [neovim]: https://formulae.brew.sh/formula/neovim
-[visual-studio-code]: https://formulae.brew.sh/cask/visual-studio-code
+[zed]: https://zed.dev/
