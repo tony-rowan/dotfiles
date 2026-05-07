@@ -45,3 +45,4 @@ copy_file "$HOME/.config/alacritty/alacritty.toml" "$src_root/.config/alacritty/
 mirror_dir_contents "$HOME/.config/alacritty/themes" "$src_root/.config/alacritty/themes"
 copy_file "$HOME/.config/tmux/tmux.conf" "$src_root/.config/tmux/tmux.conf"
 copy_file "$HOME/.config/tmux/shortpath.sh" "$src_root/.config/tmux/shortpath.sh"
+copy_file "$HOME/.config/zed/settings.json" "$src_root/.config/zed/settings.json"
