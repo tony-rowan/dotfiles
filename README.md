@@ -74,7 +74,7 @@ The repo has two top-level directories:
   `bin/setup`.
 - `src/.zshrc`: `zsh` shell config; loads `oh-my-zsh`, enables the `mise`, `git`, and `rails`
   plugins, sets editor and GPG environment variables, and sources optional machine-local hooks
-  from `~/.aliases` and `~/.machine-config`.
+  from `~/.aliases` and `~/.config/env.local`.
 - `src/.config/alacritty/alacritty.toml`: Alacritty config; imports a separate theme file, uses
   `Source Code Pro ExtraLight`, keeps live reload enabled, and maps macOS-style key bindings for
   tmux control and shell navigation.

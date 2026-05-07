@@ -34,13 +34,13 @@ print('PRESENT' if key else 'MISSING')
 If **MISSING**: stop immediately and tell the user:
 
 > Your `GEMINI_API_KEY` is not set in the current environment.
-> Add this line to `~/.machine-config` (which your `.zshrc` sources):
+> Add this line to `~/.config/env.local` (which your `.zshrc` sources):
 >
 > ```
 > export GEMINI_API_KEY=your_key_here
 > ```
 >
-> Then run `source ~/.machine-config` and retry.
+> Then run `source ~/.config/env.local` and retry.
 
 Get a key at https://aistudio.google.com/apikey (free tier available; Gemini 3
 Pro requires billing — roughly $0.10/image).
@@ -441,7 +441,7 @@ Default to `1K` for exploration, `2K` when the user is happy with a result.
 
 | Error | Resolution |
 |-------|-----------|
-| `GEMINI_API_KEY` missing | See Step 1 — direct user to `~/.machine-config` |
+| `GEMINI_API_KEY` missing | See Step 1 — direct user to `~/.config/env.local` |
 | Billing not set up | Direct to Google AI Studio billing settings |
 | `IMAGE_SAFETY` / `PROHIBITED_CONTENT` | Rephrase using abstraction, positive framing, or artistic context. Do NOT auto-retry — explain what triggered it and offer 2-3 alternative approaches for the user to approve. |
 | Rate limited (429) | Wait 60s, then retry |

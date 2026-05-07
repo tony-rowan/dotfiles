@@ -94,8 +94,8 @@ if [ -f $HOME/.aliases ]; then
 fi
 
 # Configuration just for this machine
-if [ -f $HOME/.machine-config ]; then
-    source $HOME/.machine-config
+if [ -f $HOME/.config/env.local ]; then
+    source $HOME/.config/env.local
 fi
 
 # Editor preferences
