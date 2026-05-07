@@ -15,7 +15,7 @@ Get or install all of these however you like:
 ## Setup
 
 Install the Homebrew-managed tooling via `src/Brewfile` including `git`,
-[`tmux`][tmux], [`tpm`][tpm], [`mise`][mise], [`neovim`][neovim], 
+[`tmux`][tmux], [`tpm`][tpm], [`mise`][mise], [`neovim`][neovim],
 and [`Zed`][zed].
 
 ```sh

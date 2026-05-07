@@ -76,32 +76,32 @@ what to skip entirely.
 
 Determine which category the request falls into before doing anything else:
 
-| Output type       | Examples |
-|-------------------|----------|
-| **Photograph**    | Portrait, product shot, landscape, documentary, editorial |
+| Output type       | Examples                                                        |
+| ----------------- | --------------------------------------------------------------- |
+| **Photograph**    | Portrait, product shot, landscape, documentary, editorial       |
 | **Illustration**  | Digital painting, concept art, children's book, flat vector art |
-| **Sketch**        | Pencil drawing, ink, charcoal, rough concept, storyboard |
-| **Logo / Icon**   | Brand mark, app icon, monogram, symbol |
-| **Digital asset** | UI component, banner, social graphic, presentation slide |
+| **Sketch**        | Pencil drawing, ink, charcoal, rough concept, storyboard        |
+| **Logo / Icon**   | Brand mark, app icon, monogram, symbol                          |
+| **Digital asset** | UI component, banner, social graphic, presentation slide        |
 
 If the output type is unclear, ask before going further — it determines
 everything downstream.
 
 ### Dimension applicability
 
-| Dimension              | Photograph | Illustration / Sketch | Logo / Icon        | Digital asset      |
-|------------------------|------------|-----------------------|--------------------|--------------------|
-| **Subject**            | required   | required              | required           | required           |
-| **Setting**            | required   | required              | skip               | skip               |
-| **Light**              | required   | infer from mood/style | skip               | skip               |
-| **Composition**        | required   | required              | infer (centred, isolated on transparent/white) | infer |
-| **Colour**             | required   | required              | required           | required           |
-| **Mood**               | required   | required              | optional           | optional           |
-| **Style**              | required   | required              | required           | required           |
-| **Copy**               | skip       | optional              | optional           | required           |
-| **Technical spec**     | infer      | infer                 | required           | required           |
-| **Reference images**   | optional   | optional              | optional           | optional           |
-| **Audience**           | required   | required              | required           | required           |
+| Dimension            | Photograph | Illustration / Sketch | Logo / Icon                                    | Digital asset |
+| -------------------- | ---------- | --------------------- | ---------------------------------------------- | ------------- |
+| **Subject**          | required   | required              | required                                       | required      |
+| **Setting**          | required   | required              | skip                                           | skip          |
+| **Light**            | required   | infer from mood/style | skip                                           | skip          |
+| **Composition**      | required   | required              | infer (centred, isolated on transparent/white) | infer         |
+| **Colour**           | required   | required              | required                                       | required      |
+| **Mood**             | required   | required              | optional                                       | optional      |
+| **Style**            | required   | required              | required                                       | required      |
+| **Copy**             | skip       | optional              | optional                                       | required      |
+| **Technical spec**   | infer      | infer                 | required                                       | required      |
+| **Reference images** | optional   | optional              | optional                                       | optional      |
+| **Audience**         | required   | required              | required                                       | required      |
 
 **required** — must be understood before generating; ask if not clear.
 **infer** — make a reasonable assumption, state it on the confirm card, let the
@@ -112,19 +112,19 @@ meaningfully change the output.
 
 ### Dimensions
 
-| Dimension            | What you need to know |
-|----------------------|----------------------|
-| **Subject**          | Who or what is the primary focus? Physical description, species, age, expression, key features. "A person" is not enough. |
-| **Setting**          | Where and when? Location, time of day, weather, environment, era. |
-| **Light**            | What is the light doing? Quality (hard/soft), direction (front/side/back/rim), source (golden hour, overcast, studio strobe, neon), colour temperature (warm/cool). This is the single biggest driver of feel in a photograph. |
-| **Composition**      | Where is the camera and what does it see? Distance (macro/close-up/mid/environmental), angle (eye level/bird's eye/worm's eye), framing, depth of field intent, what's deliberately excluded. |
-| **Colour**           | Palette and treatment — independent of mood. Warm vs cool tones, vibrant vs desaturated, high-contrast vs flat, film-look vs clean digital, any specific palette the image must sit within. |
-| **Mood**             | What feeling should it evoke? Energy, emotion, atmosphere. Be specific: "melancholy nostalgia" not "sad". |
-| **Style**            | Visual language: photography/illustration/3D/vector? Art movement? Camera/lens? Specific reference artist or publication? |
-| **Copy**             | All text that must appear in the image — headline, subheadline, tagline, CTA, brand name, any exact strings. Quote it precisely; Gemini renders text best when it's specified verbatim and kept under 25 characters per string. |
+| Dimension            | What you need to know                                                                                                                                                                                                                                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Subject**          | Who or what is the primary focus? Physical description, species, age, expression, key features. "A person" is not enough.                                                                                                                                                                         |
+| **Setting**          | Where and when? Location, time of day, weather, environment, era.                                                                                                                                                                                                                                 |
+| **Light**            | What is the light doing? Quality (hard/soft), direction (front/side/back/rim), source (golden hour, overcast, studio strobe, neon), colour temperature (warm/cool). This is the single biggest driver of feel in a photograph.                                                                    |
+| **Composition**      | Where is the camera and what does it see? Distance (macro/close-up/mid/environmental), angle (eye level/bird's eye/worm's eye), framing, depth of field intent, what's deliberately excluded.                                                                                                     |
+| **Colour**           | Palette and treatment — independent of mood. Warm vs cool tones, vibrant vs desaturated, high-contrast vs flat, film-look vs clean digital, any specific palette the image must sit within.                                                                                                       |
+| **Mood**             | What feeling should it evoke? Energy, emotion, atmosphere. Be specific: "melancholy nostalgia" not "sad".                                                                                                                                                                                         |
+| **Style**            | Visual language: photography/illustration/3D/vector? Art movement? Camera/lens? Specific reference artist or publication?                                                                                                                                                                         |
+| **Copy**             | All text that must appear in the image — headline, subheadline, tagline, CTA, brand name, any exact strings. Quote it precisely; Gemini renders text best when it's specified verbatim and kept under 25 characters per string.                                                                   |
 | **Technical spec**   | Pixel dimensions (if exact size matters beyond aspect ratio), file format, transparency required (critical for logos and icons), and variants needed (dark mode, monochrome, multiple sizes). Infer sensible defaults for photographs and illustrations; always ask for logos and digital assets. |
-| **Reference images** | Paths to any images the user wants to use as visual references — for style, subject likeness, or composition. Never ask for these; only capture and use them if the user provides them. Multiple references give better subject consistency. |
-| **Audience**         | Who is this for, where will it be used, and what will it sit on? Platform, surrounding visual environment (dark background, light background, over a photo, inside a crowded feed), and intended effect. Shapes aspect ratio, contrast, text legibility, and tone. |
+| **Reference images** | Paths to any images the user wants to use as visual references — for style, subject likeness, or composition. Never ask for these; only capture and use them if the user provides them. Multiple references give better subject consistency.                                                      |
+| **Audience**         | Who is this for, where will it be used, and what will it sit on? Platform, surrounding visual environment (dark background, light background, over a photo, inside a crowded feed), and intended effect. Shapes aspect ratio, contrast, text legibility, and tone.                                |
 
 ### How to gather the brief
 
@@ -132,7 +132,7 @@ meaningfully change the output.
   output. Never fire all of them at once — two questions at a time maximum.
 
 - For **infer** dimensions: make the call, then surface it on the confirm card
-  marked *(inferred)* so the user can override.
+  marked _(inferred)_ so the user can override.
 
 - If the user seems unsure: offer concrete options rather than open questions.
   "Are you thinking hard directional light or soft diffused? Here's the
@@ -150,7 +150,7 @@ ambiguous, ask. Never silently fill a required gap and hope it works.
 ## Step 3 — Confirm the Brief
 
 Before generating, show the user a summary card. Omit any **skip** dimensions
-entirely. Mark any **infer** dimensions with *(inferred)* so the user knows
+entirely. Mark any **infer** dimensions with _(inferred)_ so the user knows
 they can override.
 
 ```
@@ -203,6 +203,7 @@ photographer or illustrator.
 `Architectural Digest interior`, `Magnum Photos documentary`
 
 **Composition guidance:**
+
 - Name real cameras: `Sony A7R IV`, `Canon EOS R5`, `iPhone 16 Pro Max`
 - Specify lens: `85mm f/1.4`, `24mm wide angle`, `100mm macro`
 - Use micro-details: `sweat droplets on collarbones`, `baby hairs stuck to neck`
@@ -210,6 +211,7 @@ photographer or illustrator.
 - For text in images: quote it exactly, keep it under 25 characters
 
 **Never** use negative prompts (no API parameter exists). Use positive framing:
+
 - "no blur" → "tack-sharp, crisp focus"
 - "no people" → "empty, deserted, uninhabited"
 - "no text" → "clean, text-free, uncluttered"
@@ -277,6 +279,7 @@ print(result)
 ```
 
 After all varieties are generated:
+
 1. List them all with their paths
 2. Ask the user which they prefer
 3. Offer to iterate on the chosen one (starting a new session with that
@@ -326,12 +329,14 @@ generate-image_{stamp}_t{turn}_v{N}.png   # variety N from a batch
 ```
 
 Where:
+
 - `stamp` is `YYYYMMDD_HHMMSS` — set once per session (or shared across a
   variety batch so all variants group together)
 - `turn` is zero-padded: `t01`, `t02`, `t03`…
 - `variety` is `v1`, `v2`, `v3`…
 
 Examples:
+
 ```
 ~/.generate-image/outputs/generate-image_20260426_143022_t01.png       ← first generation
 ~/.generate-image/outputs/generate-image_20260426_143022_t02.png       ← first iteration
@@ -348,7 +353,7 @@ Examples:
 After every successful generation, write a companion `.md` file at the same
 path as the image (replacing `.png` with `.md`). Use the Write tool.
 
-Omit rows for any **skip** dimensions. Mark inferred values with *(inferred)*.
+Omit rows for any **skip** dimensions. Mark inferred values with _(inferred)_.
 
 Template:
 
@@ -361,23 +366,23 @@ Template:
 **Turn:** {turn}{, Variety: N}  
 **Model:** {model}  
 **Aspect ratio:** {ratio}  
-**Resolution:** {resolution}  
+**Resolution:** {resolution}
 
 ## Creative Brief
 
-| | |
-|---|---|
-| **Subject** | ... |
-| **Setting** | ... |
-| **Light** | ... |
+|                 |     |
+| --------------- | --- |
+| **Subject**     | ... |
+| **Setting**     | ... |
+| **Light**       | ... |
 | **Composition** | ... |
-| **Colour** | ... |
-| **Mood** | ... |
-| **Style** | ... |
-| **Copy** | ... |
-| **Tech spec** | ... |
-| **References** | ... |
-| **Audience** | ... |
+| **Colour**      | ... |
+| **Mood**        | ... |
+| **Style**       | ... |
+| **Copy**        | ... |
+| **Tech spec**   | ... |
+| **References**  | ... |
+| **Audience**    | ... |
 
 ## Final Prompt
 
@@ -396,6 +401,7 @@ reference images used, etc. Omit section if nothing to add.}
 After generating (and writing the .md):
 
 1. Tell the user the image path and open it:
+
    ```bash
    open ~/.generate-image/outputs/FILENAME.png
    ```
@@ -415,34 +421,34 @@ After generating (and writing the .md):
 
 ## Reference: Aspect Ratios
 
-| Use case | Ratio |
-|----------|-------|
-| Social post / avatar | `1:1` |
+| Use case                    | Ratio  |
+| --------------------------- | ------ |
+| Social post / avatar        | `1:1`  |
 | Blog header / YouTube thumb | `16:9` |
-| Story / Reel / mobile hero | `9:16` |
-| Portrait / book cover | `3:4` |
-| Product shot | `4:3` |
-| Instagram portrait | `4:5` |
-| Presentation slide | `16:9` |
+| Story / Reel / mobile hero  | `9:16` |
+| Portrait / book cover       | `3:4`  |
+| Product shot                | `4:3`  |
+| Instagram portrait          | `4:5`  |
+| Presentation slide          | `16:9` |
 
 If the user doesn't specify, ask — it significantly affects composition.
 
 ## Reference: Resolution
 
-| Resolution | When to use |
-|------------|------------|
-| `1K` | Drafts, iteration (fastest, ~20s) |
-| `2K` | Final assets, most use cases (~30s) |
-| `4K` | Print-quality work (~45s, costs more) |
+| Resolution | When to use                           |
+| ---------- | ------------------------------------- |
+| `1K`       | Drafts, iteration (fastest, ~20s)     |
+| `2K`       | Final assets, most use cases (~30s)   |
+| `4K`       | Print-quality work (~45s, costs more) |
 
 Default to `1K` for exploration, `2K` when the user is happy with a result.
 
 ## Reference: Error Handling
 
-| Error | Resolution |
-|-------|-----------|
-| `GEMINI_API_KEY` missing | See Step 1 — direct user to `~/.config/env.local` |
-| Billing not set up | Direct to Google AI Studio billing settings |
+| Error                                 | Resolution                                                                                                                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `GEMINI_API_KEY` missing              | See Step 1 — direct user to `~/.config/env.local`                                                                                                                              |
+| Billing not set up                    | Direct to Google AI Studio billing settings                                                                                                                                    |
 | `IMAGE_SAFETY` / `PROHIBITED_CONTENT` | Rephrase using abstraction, positive framing, or artistic context. Do NOT auto-retry — explain what triggered it and offer 2-3 alternative approaches for the user to approve. |
-| Rate limited (429) | Wait 60s, then retry |
-| Poor result | Review the brief — likely too abstract. Rebuild with specific micro-details, camera specs, and prestigious context anchors. |
+| Rate limited (429)                    | Wait 60s, then retry                                                                                                                                                           |
+| Poor result                           | Review the brief — likely too abstract. Rebuild with specific micro-details, camera specs, and prestigious context anchors.                                                    |
