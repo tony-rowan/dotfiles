@@ -22,4 +22,4 @@ brew "zlib"
 brew "pkgconfig"
 
 # GUI apps
-cask "visual-studio-code"
+cask "zed"
