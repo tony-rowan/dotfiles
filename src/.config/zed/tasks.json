@@ -1,0 +1,16 @@
+[
+  {
+    "label": "rspec $ZED_RELATIVE_FILE",
+    "command": "bin/rspec",
+    "args": ["\"$ZED_RELATIVE_FILE\""],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "tags": ["ruby", "rspec", "test"],
+  },
+  {
+    "label": "rspec $ZED_RELATIVE_FILE:$ZED_ROW",
+    "command": "bin/rspec",
+    "args": ["\"$ZED_RELATIVE_FILE:$ZED_ROW\""],
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "tags": ["ruby", "rspec", "test"],
+  },
+]

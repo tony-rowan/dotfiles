@@ -10,52 +10,79 @@
   "cli_default_open_behavior": "new_window",
   "git": {
     "inline_blame": {
-      "enabled": false
-    }
+      "enabled": false,
+    },
   },
   "disable_ai": true,
   "agent": {
     "dock": "right",
     "favorite_models": [],
-    "model_parameters": []
+    "model_parameters": [],
   },
   "collaboration_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "project_panel": {
     "bold_folder_labels": false,
-    "dock": "left"
+    "dock": "left",
   },
   "title_bar": {
-    "show_branch_status_icon": true
+    "show_branch_status_icon": true,
   },
   "status_bar": {
-    "show_active_file": true
+    "show_active_file": true,
   },
   "show_whitespaces": "trailing",
   "indent_guides": {
     "coloring": "indent_aware",
-    "background_coloring": "indent_aware"
+    "background_coloring": "indent_aware",
   },
   "tab_size": 2,
   "vim": {
-    "toggle_relative_line_numbers": true
+    "toggle_relative_line_numbers": true,
   },
   "minimap": {
-    "show": "auto"
+    "show": "auto",
   },
   "scroll_beyond_last_line": "vertical_scroll_margin",
   "which_key": {
-    "enabled": true
+    "enabled": true,
   },
   "autosave": "on_focus_change",
   "buffer_font_family": "Source Code Pro",
   "buffer_font_size": 14.0,
-  "wrap_guides": [80, 100]
+  "wrap_guides": [80, 100],
+  "languages": {
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "!solargraph", "!rubocop"],
+    },
+    "HTML+ERB": {
+      "language_servers": ["herb", "ruby-lsp"],
+    },
+  },
+  "lsp": {
+    "ruby-lsp": {
+      "initialization_options": {
+        "formatter": "standard",
+        "linters": ["standard"],
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "experimental": {
+          "classRegex": ["\\bclass:\\s*['\"]([^'\"]*)['\"]"],
+        },
+      },
+    },
+  },
+  "buffer_font_features": {
+    "calt": false,
+    "liga": false,
+  },
 }
