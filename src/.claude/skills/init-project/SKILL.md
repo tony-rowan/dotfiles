@@ -8,17 +8,24 @@ description: Scaffold a new project from scratch. Interactively gathers the proj
 Scaffold a new project by gathering requirements interactively, then writing the foundational files
 that allow construction to begin without further clarification.
 
-## Phase 1 — Confirm the project name
+## Phase 1 — Establish the project name
 
-If the user invoked the skill with a project name argument, use it as the working title and confirm
-it with the user before proceeding. If no name was given, ask for it.
+If the user invoked the skill with a project name argument, use it as the working title. If no
+name was given, ask for one before continuing.
 
-- The display name (used in file headings) may use any capitalisation the user prefers.
-- The directory name must be derived from the display name in `kebab-case`. Show the user the
-  derived directory name alongside the display name and confirm both.
-- If the user wants a different directory name, accept it — but it must still be `kebab-case`.
+Once you have a name, derive the `kebab-case` directory name. Then apply this rule:
 
-Do not proceed past this phase until the name and directory name are confirmed.
+**If the derivation is unambiguous** — the name is already a single clean word or a phrase that
+maps trivially to kebab-case with no surprising transformations (e.g. "my cool app" → `my-cool-app`,
+"TaskTracker" → `task-tracker`) — state what you're going to use and move straight to Phase 2.
+Example: _"Starting **My Cool App** in `./my-cool-app`."_
+
+**Only ask if there's a real question** — the name contains characters, abbreviations, numbers, or
+casing that could reasonably be read more than one way (e.g. "GPT2Wrapper", "my.app", "v2 api"),
+or the user might expect a different directory name than the obvious derivation. In that case, show
+the display name and the derived directory name side-by-side and confirm before continuing.
+
+If the user wants a different directory name, accept it — but it must still be `kebab-case`.
 
 ## Phase 2 — Requirements discovery
 
