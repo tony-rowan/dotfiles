@@ -1,0 +1,27 @@
+# {{PROJECT_TITLE}}
+
+{{SHORT_DESCRIPTION}}
+
+## Stack
+
+{{STACK_DESCRIPTION}}
+
+## Prerequisites
+
+{{PREREQUISITES}}
+
+## Getting Started
+
+{{GETTING_STARTED}}
+
+## Development
+
+{{DEVELOPMENT_INSTRUCTIONS}}
+
+## Testing
+
+{{TESTING_INSTRUCTIONS}}
+
+## Deployment
+
+{{DEPLOYMENT_INSTRUCTIONS}}
