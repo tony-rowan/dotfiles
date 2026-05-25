@@ -12,6 +12,14 @@
 
 ---
 
+## Technology Stack
+
+{{STACK_DESCRIPTION}}
+
+{{STACK_RATIONALE}}
+
+---
+
 ## Requirements
 
 {{REQUIREMENTS_SECTIONS}}

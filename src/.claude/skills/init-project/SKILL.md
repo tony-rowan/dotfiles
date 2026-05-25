@@ -8,6 +8,65 @@ description: Scaffold a new project from scratch. Interactively gathers the proj
 Scaffold a new project by gathering requirements interactively, then writing the foundational files
 that allow construction to begin without further clarification.
 
+## Default Technology Stack
+
+Unless the user requests otherwise or the project requirements make this stack clearly inappropriate,
+the following stack is used without asking the user about it. This decision is invisible to the user
+unless a deviation is needed.
+
+**Default stack:**
+- Language/runtime: Ruby (MRI)
+- Framework: Rails 8
+- Frontend: Hotwire (Turbo + Stimulus), TailwindCSS, Importmaps
+- Database: SQLite in development, test, and production
+- Testing: RSpec + Capybara
+- Components: ViewComponent
+
+**Why this stack (include verbatim in REQUIREMENTS.md when used):**
+- Ruby is exceptionally readable, which makes it an excellent choice for LLM-assisted development — the code is easy to reason about at a glance.
+- Rails is highly opinionated and takes a strong convention-over-configuration stance, which dramatically reduces the number of architectural decisions that need to be made and makes it an excellent choice for LLM-assisted development.
+- Hotwire (Turbo + Stimulus) with Importmaps enables modern, interactive UIs without a JavaScript build pipeline. This means no Node.js, no webpack, no bundler — the app deploys without additional build steps.
+- TailwindCSS via the importmap-compatible CDN build requires no Node toolchain, keeping the deployment footprint minimal.
+- SQLite runs reliably in production on single-instance deployments, eliminating the need for a separate database server process. This is the smallest possible path to production.
+- ViewComponent is more performant than ERB partials and its use encourages consistent, reusable UI components across the product.
+- RSpec and Capybara allow the application to be tested at both the unit level and through full browser-driven integration tests. Both levels of testing are necessary for high coverage and deployment confidence.
+
+**Node.js is actively discouraged** across all projects due to the frequency and severity of supply-chain security vulnerabilities in the npm ecosystem.
+
+### When to deviate from the default stack
+
+Deviate **only** when:
+1. The user explicitly requests a different stack, **or**
+2. The project requirements make this stack clearly unsuitable (e.g. a documentation site built from plain Markdown files — a static site generator like Bridgetown is more appropriate; a data-science or ML pipeline).
+
+Deviations should be rare. A web application with a database, user accounts, and a UI is almost always well served by the default stack.
+
+### If deviation is user-requested
+
+Ask the user to justify each choice that differs from the default. The justification must describe
+a concrete technical or functional reason — something about what the technology does or enables.
+
+**Rejected justifications** (do not accept these; ask the user to try again):
+- "It's what I know" / "I'm familiar with it"
+- "It's the most popular" / "everyone uses it"
+- "It's the default" / "it comes with X"
+- "It's the best"
+- "I like it" / "I prefer it"
+- "It's easier"
+
+**Accepted justifications** (examples of the bar to meet):
+- "We need real-time bidirectional communication; Action Cable adds complexity we want to avoid, so we'll use Go for the WebSocket service."
+- "The output is a purely static site built from Markdown; a Rails app adds unnecessary runtime overhead."
+- "The client's existing infrastructure is Python-only and we cannot introduce another runtime."
+
+Once a justification is accepted, record it faithfully in the REQUIREMENTS.md stack section.
+
+### If deviation is requirement-driven
+
+Determine the appropriate stack yourself based on the requirements. Explain to the user why the
+default stack was not appropriate and what you have chosen instead. You do not need their approval
+on the stack choice, but you must explain the reasoning clearly and give them the chance to redirect.
+
 ## Phase 1 — Establish the project name
 
 If the user invoked the skill with a project name argument, use it as the working title. If no
@@ -30,8 +89,9 @@ If the user wants a different directory name, accept it — but it must still be
 ## Phase 2 — Requirements discovery
 
 This phase is the core of the skill. Its goal is to gather enough information to write all three
-output files completely and accurately, without assumptions. Be thorough but purposeful — every
-question should unlock something concrete in the output files.
+output files completely and accurately. Focus entirely on what the user wants to build, who will
+use it, and why — **not** on how it will be built. Stack and technology choices are handled
+separately and should not be raised with the user unless a deviation is needed.
 
 Work through the areas below. You do not need to ask about every area in a single message; instead
 ask in focused, conversational batches. Adapt the order and depth to what the user has already
@@ -51,31 +111,25 @@ told you.
 - Are there known constraints — performance, compliance, accessibility, scale, budget, timeline?
 - Are there integrations with external systems, APIs, or data sources?
 
-**Stack & technology choices**
-- What language(s) and runtime(s) will be used? If undecided, suggest options and ask the user
-  to choose — do not assume.
-- What frameworks, libraries, or platforms are intended or preferred?
-- What is the target environment — local CLI, web browser, mobile, server, embedded, etc.?
-- Is there a preferred database or data-persistence approach?
-- What is the deployment target — local only, cloud, self-hosted, etc.?
+**Deployment & environment** _(ask only if relevant — skip for purely local tools)_
+- Where will this run — local only, a single server, a cloud platform?
+- Is there an existing hosting environment or infrastructure constraint?
 
-**Development & tooling**
-- What package manager, build tool, or task runner should be used?
-- Are there specific linting, formatting, or code-style requirements?
-- Is there a preferred testing framework or approach?
-- Will there be CI/CD? If so, on what platform?
+### What NOT to ask about in Phase 2
 
-**Project structure**
-- Are there conventions for how the source tree should be laid out?
-- Are there specific configuration files that should exist from day one (e.g. `.env.example`,
-  `docker-compose.yml`, `.editorconfig`)?
+Do not ask the user about programming languages, frameworks, databases, testing tools, build
+systems, or any other technical implementation detail unless:
+- They have already raised it themselves, or
+- A deviation from the default stack is clearly required and you need their input to resolve it.
+
+Users of this skill may have little or no technical expertise. Their time in Phase 2 is best spent
+on what the product does and who it serves.
 
 ### Handling gaps and conflicts
 
-- If the user's answers contain a conflict (e.g. two incompatible framework choices), flag it
+- If the user's answers contain a conflict (e.g. two incompatible feature requirements), flag it
   explicitly and ask for a decision before continuing.
-- If the user has made an assumption that may not hold (e.g. choosing a framework that doesn't
-  support the target environment), surface this as a risk and get confirmation.
+- If the user has made an assumption that may not hold, surface it as a risk and get confirmation.
 - If a question is not yet relevant for this type of project, skip it — but note any area you
   skipped and why, so the user can bring it up later.
 
@@ -84,19 +138,16 @@ told you.
 This phase must produce zero ambiguities and zero assumptions in the output files. Apply these
 rules strictly throughout the conversation:
 
-- **Never assume.** If a decision has not been stated by the user, it is not made. Do not infer
-  a stack choice, requirement, or constraint from context clues — ask.
+- **Never assume.** If a decision has not been stated by the user, it is not made.
 - **Name every assumption you catch yourself about to make.** If you find yourself thinking
-  "they probably mean X" or "this type of project usually uses Y", stop and ask instead.
-- **Surface all conflicts before moving on.** If two answers are incompatible, do not silently
-  favour one. State the conflict clearly, explain why it matters, and ask the user to resolve it.
-- **Distinguish must-haves from maybes.** If the user describes something in uncertain language
-  ("might", "maybe", "we could"), ask whether it is a requirement or a future consideration.
+  "they probably mean X", stop and ask instead.
+- **Surface all conflicts before moving on.**
+- **Distinguish must-haves from maybes.** If the user uses uncertain language ("might", "maybe",
+  "we could"), ask whether it is a requirement or a future consideration.
 - **Pin down vague terms.** Words like "fast", "simple", "modern", "scalable", or "standard"
   mean different things in different contexts. Ask what the user means concretely.
-- **Do not carry forward unresolved items.** If a question is deferred ("we'll decide later"),
-  record it explicitly as a TODO with the exact information needed to resolve it — do not treat
-  the deferral as an implicit answer.
+- **Do not carry forward unresolved items.** If a decision is deferred, record it as a TODO with
+  the exact information needed to resolve it.
 
 ### Readiness check
 
@@ -105,11 +156,26 @@ no placeholder, no assumption, and no ambiguity remaining. If any gap exists, as
 follow-up questions before continuing. Do not move to Phase 3 with unresolved items.
 
 When you believe you are ready, present the user with a concise summary of everything captured —
-key decisions, requirements, stack choices, and any outstanding TODOs — and ask for explicit
-confirmation before proceeding. If the user spots anything missing or wrong at this point, resolve
-it before writing any files.
+key decisions, requirements, and any outstanding TODOs — and ask for explicit confirmation before
+proceeding.
 
-## Phase 3 — Write the output files
+## Phase 3 — Determine the stack
+
+After Phase 2 is complete and confirmed, determine which stack to use. This step is not
+conversational unless a deviation is required.
+
+1. **Check for explicit deviation requests.** If the user raised any technology preferences during
+   Phase 2, note them now. If they require deviation, follow the deviation process described in the
+   Default Technology Stack section above.
+
+2. **Check for requirement-driven deviation.** Review the confirmed requirements. If the default
+   stack is clearly unsuitable (see examples above), determine the appropriate stack and briefly
+   explain the choice to the user before proceeding.
+
+3. **Otherwise, use the default stack silently.** Do not mention it; simply use it when writing
+   the output files.
+
+## Phase 4 — Write the output files
 
 Create the project directory and initialise git, then write all three files. Use the templates in
 the `templates/` directory alongside this skill file as a structural guide — they define the
@@ -130,6 +196,12 @@ git init
 - Follow with the guiding motivations and any principles that should govern trade-off decisions.
 - List requirements in detail, grouped logically (e.g. by feature area, by user role, or by
   must-have vs. future phase). Use numbered lists within groups so requirements are referenceable.
+- Include a **Technology Stack** section (see template) written as one or two short paragraphs —
+  no sub-headings, no bullet lists. Cover development, test, and production inline. Follow with a
+  brief explanation of why the stack was chosen. For the default stack, use the rationale from the
+  Default Technology Stack section above. For deviated choices, use the justification the user
+  provided or your own reasoning if requirement-driven. Keep it concise — this section carries no
+  more weight than Motivation or Guiding Principles.
 - This file is the most important output — it must be complete and unambiguous.
 
 ### README.md
@@ -155,7 +227,7 @@ git init
 - An extended documentation section with commented-out examples showing how to link to `docs/`
   files as the project grows. Do not create `docs/` yet.
 
-## Phase 4 — Handoff
+## Phase 5 — Handoff
 
 After writing the files, close out warmly. You've just helped someone start something new — the
 tone should reflect that. Be brief, be genuine, and leave them feeling set up for success.
@@ -174,7 +246,7 @@ Wait for the user to confirm before making the first commit.
 
 ## Guardrails
 
-- Do not create the directory or any files until Phase 3.
+- Do not create the directory or any files until Phase 4.
 - Do not leave template placeholders in the output files. Every section must contain real content
   or be omitted entirely if not applicable.
 - Do not invent requirements, stack choices, or constraints. If something is unknown, ask.
@@ -182,3 +254,5 @@ Wait for the user to confirm before making the first commit.
 - Do not run `git add` or `git commit` until the user explicitly confirms they are ready.
 - If the user wants to skip a question or defer a decision, note it as a TODO in the relevant
   file section and explain what information is needed to resolve it.
+- Do not raise the topic of technology stack with the user unless a deviation from the default
+  is being considered or the user raises it themselves.
