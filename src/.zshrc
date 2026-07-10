@@ -105,3 +105,7 @@ export BUNDLER_EDITOR=nvim
 # Enable FZF for back search etc.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
