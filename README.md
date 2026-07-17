@@ -45,7 +45,10 @@ The repo has two top-level directories:
 │   └── sync
 └── src/
     ├── .claude/
-    │   └── skills/
+    │   ├── agents/
+    │   ├── commands/
+    │   ├── skills/
+    │   └── statusline-command.sh
     ├── .config/
     │   ├── alacritty/
     │   ├── tmux/
@@ -61,7 +64,8 @@ The repo has two top-level directories:
 
 - `bin/apply`: copies the tracked config from `src/` into the matching locations under `$HOME`,
   including `~/bin/`, `~/.zshrc`, `~/.default-gems`, `~/.config/alacritty/`, `~/.config/tmux/`,
-  `~/.config/zed/`, and `~/.claude/skills/`.
+  `~/.config/zed/`, and `~/.claude/agents/`, `~/.claude/commands/`, `~/.claude/skills/`, and
+  `~/.claude/statusline-command.sh`.
 - `bin/setup`: installs the Homebrew-managed third-party tools assumed by the repo using
   `src/Brewfile`.
 - `bin/sync`: copies the current workstation config from `$HOME` back into the tracked locations
@@ -88,7 +92,11 @@ The repo has two top-level directories:
 - `src/bin/git-remove-other-branches`: git helper script; deletes every local branch except the
   current one.
 - `src/.default-gems`: Ruby default gems file; installs a small baseline set of gems.
+- `src/.claude/agents/`: Claude Code custom agents.
+- `src/.claude/commands/`: Claude Code custom slash commands.
 - `src/.claude/skills/`: Claude Code custom skills.
+- `src/.claude/statusline-command.sh`: Claude Code status line script; renders cwd, git branch,
+  model, context window usage, and session usage in the status line.
 
 [alacritty]: https://alacritty.org/
 [source-code-pro]: https://fonts.adobe.com/fonts/source-code-pro
